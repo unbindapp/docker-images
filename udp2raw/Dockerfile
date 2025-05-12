@@ -1,11 +1,11 @@
-FROM alpine:3.18 as builder
+FROM alpine:3.18 AS builder
 
 # Install build dependencies
 RUN apk add --no-cache build-base git linux-headers
 
 # Clone and build udp2raw
 WORKDIR /build
-RUN git clone https://github.com/wangyu-/udp2raw.git
+RUN git clone https://github.com/unbindapp/udp2raw.git
 WORKDIR /build/udp2raw
 RUN make dynamic
 

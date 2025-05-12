@@ -14,7 +14,6 @@ AUTH=${UDP2RAW_AUTH:-"md5"}                 # Auth algorithm
 LOG_LEVEL=${UDP2RAW_LOG_LEVEL:-"info"}      # Log level
 MTU=${UDP2RAW_MTU:-"1500"}                  # MTU
 SOCK_BUFF=${UDP2RAW_SOCK_BUFF:-"1024"}      # Socket buffer size in KB
-TIMEOUT=${UDP2RAW_TIMEOUT:-"10"}            # Timeout in seconds
 
 # Resolve DNS if needed (important for Kubernetes)
 if [[ "$MODE" == "client" && "$REMOTE_ADDR" != "127.0.0.1" && ! "$REMOTE_ADDR" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -43,7 +42,7 @@ fi
 
 # Add common arguments
 CMD_ARGS="$CMD_ARGS -k \"$SECRET_KEY\" --raw-mode $RAW_MODE --cipher-mode $CIPHER --auth-mode $AUTH"
-CMD_ARGS="$CMD_ARGS --log-level $LOG_LEVEL --mtu $MTU --sock-buf $SOCK_BUFF --timeout $TIMEOUT"
+CMD_ARGS="$CMD_ARGS --log-level $LOG_LEVEL --mtu-warn $MTU --sock-buf $SOCK_BUFF"
 
 # Add any additional arguments
 if [[ -n "$UDP2RAW_ADDITIONAL_ARGS" ]]; then
