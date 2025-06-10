@@ -1,4 +1,4 @@
-FROM alpine:latest as downloader
+FROM alpine:latest AS downloader
 
 ARG TARGETOS
 ARG TARGETARCH
